@@ -1,12 +1,7 @@
 import type {StructureBuilder, StructureResolver} from 'sanity/structure'
-import {
-  DocumentIcon,
-  TagIcon,
-  TranslateIcon,
-  PackageIcon,
-  EarthGlobeIcon,
-} from '@sanity/icons'
+import {DocumentIcon, TagIcon, TranslateIcon, PackageIcon} from '@sanity/icons'
 import {LOCALES, LOCALIZED_DOCUMENT_TYPES, type LocaleId} from '../lib/locales'
+import {getFlagIcon} from '../lib/flagIcons'
 
 type LocalizedTypeConfig = {
   type: 'page' | 'category'
@@ -57,7 +52,7 @@ function localeChild(
   return S.listItem()
     .id(`${type}-${localeId}`)
     .title(localeTitle)
-    .icon(TranslateIcon)
+    .icon(getFlagIcon(localeId))
     .child(
       S.documentList()
         .id(`${type}-${localeId}-list`)
@@ -89,21 +84,12 @@ export const structure: StructureResolver = (S) =>
 
       S.divider(),
 
-      S.listItem()
-        .id('locales')
-        .title('Locales')
-        .icon(EarthGlobeIcon)
-        .child(S.documentTypeList('locale').title('Locales')),
-
-      S.divider(),
-
       ...S.documentTypeListItems().filter((listItem) => {
         const id = listItem.getId()
         return (
           id !== undefined &&
           !LOCALIZED_DOCUMENT_TYPES.includes(id as (typeof LOCALIZED_DOCUMENT_TYPES)[number]) &&
-          id !== 'product' &&
-          id !== 'locale'
+          id !== 'product'
         )
       }),
     ])

@@ -3,7 +3,6 @@ import {linkType} from './objects/linkType'
 import {nutritionFactsType} from './objects/nutritionFactsType'
 import {simpleBlockContentType} from './objects/simpleBlockContentType'
 
-import {localeType} from './documents/localeType'
 import {categoryType} from './documents/categoryType'
 import {productType} from './documents/productType'
 import {pageType} from './documents/pageType'
@@ -25,7 +24,6 @@ export const schemaTypes = [
   nutritionFactsType,
   simpleBlockContentType,
 
-  localeType,
   categoryType,
   productType,
   pageType,

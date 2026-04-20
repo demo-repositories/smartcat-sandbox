@@ -3,6 +3,7 @@ import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {documentInternationalization} from '@sanity/document-internationalization'
 import {internationalizedArray} from 'sanity-plugin-internationalized-array'
+import {languageFilter} from '@sanity/language-filter'
 import {schemaTypes} from './schemaTypes'
 import {structure} from './structure'
 import {DEFAULT_LOCALE, LOCALES, LOCALIZED_DOCUMENT_TYPES} from './lib/locales'
@@ -27,6 +28,9 @@ export default defineConfig({
       languages: supportedLanguages,
       defaultLanguages: [DEFAULT_LOCALE],
       fieldTypes: ['string', 'text', 'simpleBlockContent'],
+      languageFilter: {
+        documentTypes: ['product'],
+      },
     }),
   ],
 
